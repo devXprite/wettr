@@ -1,7 +1,9 @@
+/* eslint-disable unicorn/no-await-expression-member */
 /* eslint-disable unicorn/no-array-for-each */
 const chalk = require("chalk");
 const Table = require("cli-table3");
 const ora = require("ora");
+const { prompt } = require("enquirer");
 const Icons = require("../icons/icons");
 const getForecast = require("../lib/getForecast");
 const getWeather = require("../lib/getWeather");
@@ -104,7 +106,11 @@ const foreCast = (city) => new Promise((resolve) => {
 });
 
 const main = async () => {
-    const city = "unnao";
+    const { city } = await prompt({
+        type: "input",
+        name: "city",
+        message: "Enter your city name",
+    });
 
     console.log("\n");
 

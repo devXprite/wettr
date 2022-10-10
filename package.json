@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start:api":"node api/server.js",
+        "start:api": "node api/server.js",
         "lint": "eslint . --ext .js",
         "lint:fix": "eslint . --ext .js --fix",
         "prettier": "prettier --check .",
@@ -20,7 +20,9 @@
         "chalk": "^4.1.0",
         "cli-table3": "^0.6.3",
         "dotenv": "^16.0.3",
+        "enquirer": "^2.3.6",
         "express": "^4.18.2",
+        "inquirer": "^9.1.3",
         "moment": "^2.29.4",
         "ora": "^5.4.1"
     },
