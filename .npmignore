@@ -1,3 +1,5 @@
+.env
 .vscode
+.vercel
 api
 icons/images

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* eslint-disable unicorn/no-await-expression-member */
 /* eslint-disable unicorn/no-array-for-each */
 const chalk = require("chalk");
@@ -10,7 +12,7 @@ const getWeather = require("../lib/getWeather");
 
 const spinner = ora();
 
-const weather = (city) => new Promise((resolve) => {
+const weather = (city) => new Promise((resolve, reject) => {
     spinner.start("fetching weather data ...");
     getWeather(city)
         .then((weatherObj) => {
@@ -54,11 +56,13 @@ const weather = (city) => new Promise((resolve) => {
             resolve(weatherTable.toString());
         })
         .catch((error) => {
+            if (error?.message) { spinner.fail(error?.message); return; }
             spinner.fail("Unable to fetch weather data.");
+            reject();
         });
 });
 
-const foreCast = (city) => new Promise((resolve) => {
+const foreCast = (city) => new Promise((resolve, reject) => {
     spinner.start("fetching weather forecast data...");
     getForecast(city)
         .then((foreCastObj) => {
@@ -66,8 +70,8 @@ const foreCast = (city) => new Promise((resolve) => {
                 head: [
                     { colSpan: 2, content: "Time" },
                     "Temperature",
-                    "Humidity",
                     "Weather",
+                    "Humidity",
                     "Visibility",
                     "Precipitation",
                     "Wind",
@@ -101,11 +105,13 @@ const foreCast = (city) => new Promise((resolve) => {
             resolve(table.toString());
         })
         .catch((error) => {
-            spinner.fail("Unable to fetch forecast data.");
+            if (error?.message) { spinner.fail(error?.message); return; }
+            spinner.fail("Unable to fetch weather data.");
+            reject();
         });
 });
 
-const main = async () => {
+(async () => {
     const { city } = await prompt({
         type: "input",
         name: "city",
@@ -120,6 +126,4 @@ const main = async () => {
     const forecastData = await foreCast(city);
     console.log(chalk.yellow.bold("\n\n Weather forecast:"));
     console.log(forecastData);
-};
-
-main();
+})();
