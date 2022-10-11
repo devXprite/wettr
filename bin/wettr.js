@@ -73,7 +73,6 @@ const foreCast = (city) => new Promise((resolve, reject) => {
                     "Weather",
                     "Humidity",
                     "Visibility",
-                    "Precipitation",
                     "Wind",
                     "Cloud",
                     "Rain",
@@ -102,7 +101,7 @@ const foreCast = (city) => new Promise((resolve, reject) => {
             });
 
             spinner.stop();
-            resolve(table.toString());
+            resolve(chalk.yellow.bold("\n\n Weather forecast:\n") + table.toString());
         })
         .catch((error) => {
             if (error?.message) { spinner.fail(error?.message); return; }
@@ -124,6 +123,5 @@ const foreCast = (city) => new Promise((resolve, reject) => {
     console.log(weatherData);
 
     const forecastData = await foreCast(city);
-    console.log(chalk.yellow.bold("\n\n Weather forecast:"));
     console.log(forecastData);
 })();
