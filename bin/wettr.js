@@ -49,7 +49,7 @@ const weather = (city) => new Promise((resolve, reject) => {
                 },
                 // head: [{ colSpan: 2, content: "Current Weather:" }],
             });
-            weatherTable.push([`\n${weatherData}`, " ".repeat(4), weatherIcon]);
+            weatherTable.push([`\n${weatherData}`, weatherIcon]);
             spinner.stop();
             resolve(weatherTable.toString());
         })
