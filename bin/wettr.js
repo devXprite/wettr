@@ -6,7 +6,7 @@ const chalk = require("chalk");
 const Table = require("cli-table3");
 const ora = require("ora");
 const { prompt } = require("enquirer");
-const Icons = require("../icons/icons");
+const Icons = require("../icons/icons.json");
 const getForecast = require("../lib/getForecast");
 const getWeather = require("../lib/getWeather");
 
@@ -16,16 +16,14 @@ const weather = (city) => new Promise((resolve, reject) => {
     spinner.start("fetching weather data ...");
     getWeather(city)
         .then((weatherObj) => {
-            const weatherIcon = chalk.cyan(Icons[weatherObj.Weather]);
+            const weatherIcon = Icons[weatherObj.icon];
 
-            const weatherData = Object.keys(weatherObj)
+            const weatherData = Object.keys(weatherObj.main)
                 .map(
-                    (key) => `${chalk.whiteBright.bold(key)} : ${chalk.white(weatherObj[key] || chalk.gray("n\\a"))}`,
+                    (key) => `${chalk.whiteBright.bold(key)} : ${chalk.white(weatherObj.main[key] || chalk.gray("n\\a"))}`,
                 )
                 .filter(Boolean)
                 .join("\n");
-
-            delete weatherData.Weather;
 
             const weatherTable = new Table({
                 chars: {
@@ -51,14 +49,17 @@ const weather = (city) => new Promise((resolve, reject) => {
                 },
                 // head: [{ colSpan: 2, content: "Current Weather:" }],
             });
-            weatherTable.push([`\n${weatherData}`, " ".repeat(15), weatherIcon]);
+            weatherTable.push([`\n${weatherData}`, " ".repeat(4), weatherIcon]);
             spinner.stop();
             resolve(weatherTable.toString());
         })
         .catch((error) => {
-            if (error?.message) { spinner.fail(error?.message); return; }
+            if (error?.message) {
+                spinner.fail(error?.message);
+                return;
+            }
             spinner.fail("Unable to fetch weather data.");
-            reject();
+            reject(error);
         });
 });
 
@@ -104,7 +105,10 @@ const foreCast = (city) => new Promise((resolve, reject) => {
             resolve(chalk.yellow.bold("\n\n Weather forecast:\n") + table.toString());
         })
         .catch((error) => {
-            if (error?.message) { spinner.fail(error?.message); return; }
+            if (error?.message) {
+                spinner.fail(error?.message);
+                return;
+            }
             spinner.fail("Unable to fetch weather data.");
             reject();
         });

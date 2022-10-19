@@ -16,6 +16,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "ascii": "^1.0.0",
         "axios": "^0.27.2",
         "chalk": "^4.1.0",
         "cli-table3": "^0.6.3",
@@ -26,6 +27,7 @@
         "ora": "^5.4.1"
     },
     "devDependencies": {
+        "asciify-image": "^0.1.9",
         "eslint": "^8.21.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-prettier": "^8.5.0",

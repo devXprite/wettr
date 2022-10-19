@@ -14,23 +14,35 @@ app.set("json spaces", 2);
 app.get("/api/forecast/:city", async (req, res) => {
     const { city } = req.params;
 
-    axios.get(`${baseUrl}/forecast?q=${city}&appid=${apiKey}`).then((response) => {
-        res.send(response.data);
-    }).catch((error) => {
-        if (error.response) { res.status(error.response.status).send(error.response.data); return; }
-        res.status(500).send("Server Error!");
-    });
+    axios
+        .get(`${baseUrl}/forecast?q=${city}&appid=${apiKey}`)
+        .then((response) => {
+            res.send(response.data);
+        })
+        .catch((error) => {
+            if (error.response) {
+                res.status(error.response.status).send(error.response.data);
+                return;
+            }
+            res.status(500).send("Server Error!");
+        });
 });
 
 app.get("/api/weather/:city", async (req, res) => {
     const { city } = req.params;
 
-    axios.get(`${baseUrl}/weather?q=${city}&appid=${apiKey}`).then((response) => {
-        res.send(response.data);
-    }).catch((error) => {
-        if (error.response) { res.status(error.response.status).send(error.response.data); return; }
-        res.status(500).send("Server Error!");
-    });
+    axios
+        .get(`${baseUrl}/weather?q=${city}&appid=${apiKey}`)
+        .then((response) => {
+            res.send(response.data);
+        })
+        .catch((error) => {
+            if (error.response) {
+                res.status(error.response.status).send(error.response.data);
+                return;
+            }
+            res.status(500).send("Server Error!");
+        });
 });
 
 app.listen(port, () => {
