@@ -107,6 +107,7 @@ const foreCast = (city) => new Promise((resolve, reject) => {
         .catch((error) => {
             if (error?.message) {
                 spinner.fail(error?.message);
+                reject();
                 return;
             }
             spinner.fail("Unable to fetch weather data.");

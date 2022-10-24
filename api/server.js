@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const { default: axios } = require("axios");
+const pkg = require("../package.json");
 
 dotenv.config();
 
@@ -10,6 +11,10 @@ const apiKey = process.env.OPEN_WEATHER_API;
 const baseUrl = "https://api.openweathermap.org/data/2.5";
 
 app.set("json spaces", 2);
+
+app.get("/", (req, res) => {
+    res.redirect(pkg.homepage);
+});
 
 app.get("/api/forecast/:city", async (req, res) => {
     const { city } = req.params;

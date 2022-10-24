@@ -15,8 +15,8 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "homepage": "https://github.com/devXprite/wettr",
     "dependencies": {
-        "ascii": "^1.0.0",
         "axios": "^0.27.2",
         "chalk": "^4.1.0",
         "cli-table3": "^0.6.3",
