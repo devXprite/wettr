@@ -1,6 +1,6 @@
 {
     "name": "wettr",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "🌦 Easy way to check Weather via the command line.",
     "main": "bin/wettr.js",
     "scripts": {
