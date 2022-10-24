@@ -1,9 +1,5 @@
 <div id="top"></div>
-
-
-<br />
 <div align="center">
-
   <h2>Wettr</h2>
   <p><i>Easy way to check Weather via the command line</i></p>
   <img alt="License" src="https://img.shields.io/npm/l/wettr">
@@ -15,12 +11,11 @@
   <br />
   <a href="https://github.com/devxprite/wettr/issues">Report Bug</a>
   ·
-  <a href="https://github.com/devxprite/wettr/issues">Request Feature</a>
-
-  <a href="https://github.com/devxprite/wettr">
-    <img src="./_includes/wettr_screenshot.png" alt="Logo" >
-  </a><br /><br />
+  <a href="https://github.com/devxprite/wettr/issues">Request Feature</a> <br /><br />
 </div>
+
+## ScreenShot
+![ScreenShot](./_includes/wettr_screenshot.png)
 
 ## Installation
 
