@@ -119,7 +119,7 @@ const foreCast = (city) => new Promise((resolve, reject) => {
     const { city } = await prompt({
         type: "input",
         name: "city",
-        message: "Enter your city name",
+        message: "Postal Code OR City Name",
     });
 
     console.log("\n");

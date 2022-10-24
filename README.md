@@ -2,12 +2,12 @@
 <div align="center">
   <h2>Wettr</h2>
   <p><i>Easy way to check Weather via the command line</i></p>
-  <img alt="License" src="https://img.shields.io/npm/l/wettr">
-  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/devxprite/wettr">
-  <img alt="version" src="https://img.shields.io/npm/v/wettr">
+  <img alt="License" src="https://img.shields.io/npm/l/wettr?color=cyan">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/devxprite/wettr?color=cyan">
+  <img alt="version" src="https://img.shields.io/npm/v/wettr?color=cyan">
   <br>
-  <img alt="downloads" src="https://img.shields.io/npm/dw/wettr">
-  <img alt="Libraries.io SourceRank" src="https://img.shields.io/librariesio/sourcerank/npm/wettr">
+  <img alt="downloads" src="https://img.shields.io/npm/dw/wettr?color=cyan">
+  <img alt="Libraries.io SourceRank" src="https://img.shields.io/librariesio/sourcerank/npm/wettr?color=cyan">
   <br />
   <a href="https://github.com/devxprite/wettr/issues">Report Bug</a>
   ·
@@ -17,21 +17,23 @@
 ## ScreenShot
 ![ScreenShot](./_includes/wettr_screenshot.png)
 
-## Installation
+## About 
+**Wettr** is a command line app to get instant real-time weather data by city name from any corner on earth right on the command line.  
+This is written in **JavaScript** and powered by [OpenWeatherMap API](https://openweathermap.org/api). It provides detailed weather data and  forecasts for next **4** days with **6** hour intervals.  
 
-### Using npx
+You can look up weather data any of the following means:
+1. By entering City Name
+2. By entering Postal Code
+
+## Install
+
+> You need NodeJs 14 or later to run this tool.
 
 ```bash
-npx wettr
+npm install wettr -g
 ```
 
-### Using npm
-
-```bash
-npm install -g -s wettr
-```
-
-### Uninstall
+## Uninstall
 
 ```bash
 npm remove wettr -g
