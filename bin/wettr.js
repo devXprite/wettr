@@ -116,11 +116,11 @@ const foreCast = (city) => new Promise((resolve, reject) => {
 });
 
 (async () => {
-    const { city } = await prompt({
+    const city = process.argv[2] || (await prompt({
         type: "input",
         name: "city",
         message: "Postal Code OR City Name",
-    });
+    })).city;
 
     console.log("\n");
 
